@@ -1,0 +1,54 @@
+-- 2. Mostrar el número de ventas de cada producto, ordenado de más a menos ventas.
+SELECT 
+    p.producto,
+    COUNT(v.producto) as total
+FROM
+    venta  v
+    INNER JOIN productos p 
+    ON v.producto = p.producto 
+GROUP BY 
+    p.producto
+ORDER BY
+    total DESC;
+	
+-- 3. Obtener un informe completo de ventas, indicando el nombre del cajero que realizo la venta, nombre y 
+-- precios de los productos vendidos, y el piso en el que se encuentra la máquina registradora donde se realizó la venta.
+
+SELECT 
+	p.producto,
+    c.cajeros,
+    c.NomApels,
+    COUNT(v.producto) as total_Ventas,
+    COUNT(v.producto)*(select precio from productos where Producto =p.producto) as total_Precio
+FROM
+    venta  v
+    INNER JOIN productos p ON v.producto = p.producto 
+    
+     INNER JOIN cajeros c ON v.cajero = c.cajeros 
+GROUP BY 
+    p.producto
+
+-- 4. Obtener las ventas totales realizadas en cada piso.
+	
+	SELECT 
+    m.piso,
+    COUNT(v.producto) as total
+FROM
+    venta  v
+    INNER JOIN maquinas_registradoras m 
+    ON v.Maquina = m.Maquina
+GROUP BY 
+    m.piso
+	
+-- 5 Obtener el código y nombre de cada cajero junto con el importe total de sus ventas.
+SELECT 
+    c.cajeros,
+    c.NomApels,
+    COUNT(v.producto) as total_Ventas,
+     COUNT(p.producto)*(select precio from productos where Producto =p.producto) as total_Precio
+FROM
+    venta  v
+    INNER JOIN productos p ON v.producto = p.producto 
+	INNER JOIN cajeros c ON v.cajero = c.cajeros 
+GROUP BY 
+    c.cajeros

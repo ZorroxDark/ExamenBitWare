@@ -1,0 +1,30 @@
+INSERT INTO `er`.`cajeros` (`Cajeros`,`NomApels`)
+VALUES
+(1,"Miguel"),(2,"Luis");
+
+INSERT INTO `er`.`maquinas_registradoras`(`Maquina`,`Piso`)
+VALUES (1,1),(2,2),(3,2);
+
+INSERT INTO `er`.`productos`(`Producto`,`Nombre`,`Precio`)
+VALUES
+(1,"Compaq",2000),
+(2,"HP",8000),
+(3,"SONY",7000),
+(4,"DELL",3000),
+(5,"MAC",9000);
+
+
+INSERT INTO `er`.`venta`(`Cajero`,`Maquina`,`Producto`)
+VALUES
+(1,1,1),(1,1,1),
+(2,1,1),(2,1,1),
+(1,2,2),(1,2,2),(1,2,2),
+(1,2,3),(1,2,3),(1,2,3),(1,2,3),
+(1,2,4),
+(1,2,5),(1,2,5),(1,2,5),(1,2,5),(1,2,5),(1,2,5),
+(2,2,5),(2,2,5),(2,2,5),(2,2,5),(2,2,5),(2,2,5),
+(2,2,5),(2,2,5),(2,2,5),(2,2,5),(2,2,5),(2,2,5),
+(1,3,4),(1,3,4),(2,3,4),(2,3,4),(2,3,4),(2,3,4);
+
+
+
